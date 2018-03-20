@@ -20,3 +20,10 @@ chmod 0600 /root/.docker/config.json
 
 # Fix permissions
 chown core:core -R /home/core
+
+# sysctls for AFL
+sysctl kernel.core_pattern=core
+sysctl kernel.core_uses_pid=1
+
+# sysctls for RR
+sysctl kernel.perf_event_paranoid=1
