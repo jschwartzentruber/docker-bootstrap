@@ -10,12 +10,9 @@ cat .ssh/authorized_keys >> /home/core/.ssh/authorized_keys
 cp login_to_docker.sh /home/core
 
 # Get credstash credentials
-docker pull python:slim
-docker run --rm -v /home/core:/mnt python:slim /mnt/bootstrap/get_credstash_keys.sh
-
-# Move docker login
+docker pull truber/credstash:latest
 mkdir -p /root/.docker
-mv /home/core/docker-config.json /root/.docker/config.json
+docker run --rm truber/credstash get docker-login-config-json > /root/.docker/config.json
 chmod 0600 /root/.docker/config.json
 
 # Fix permissions
