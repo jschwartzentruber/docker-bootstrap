@@ -7,6 +7,8 @@ then
 
   USER=ubuntu
 else
+  systemctl stop update-engine locksmithd
+
   USER=core
 fi
 
