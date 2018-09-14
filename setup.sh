@@ -1,10 +1,6 @@
 #!/bin/sh -exu
 if grep -q Ubuntu /etc/issue
 then
-  apt-get update
-  apt-get install -y docker.io
-  adduser ubuntu docker
-
   USER=ubuntu
 else
   systemctl stop update-engine locksmithd
