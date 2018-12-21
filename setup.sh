@@ -24,7 +24,7 @@ docker run --rm mozillasecurity/credstash get grizzly-ssh-authorized-keys >> /ho
 
 # Install docker compose
 mkdir -p /opt/bin
-LATEST_VERSION="$(curl -Ls 'https://api.github.com/repos/docker/compose/releases/latest' | awk -f JSON.awk - | awk '/^\["tag_name"\]/ { gsub(/"/,""); print $2 }')"
+LATEST_VERSION="$(curl -s "https://github.com/docker/compose/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')"
 curl -L "https://github.com/docker/compose/releases/download/$LATEST_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /opt/bin/docker-compose
 chmod +x /opt/bin/docker-compose
 
